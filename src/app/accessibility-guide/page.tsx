@@ -6,7 +6,7 @@ export default function AccessibilityGuidePage() {
           Accessibility Guide
         </h1>
         <p className="text-gray-300 mb-8 leading-relaxed">
-          EasyPage is designed for neurodivergent accessibility with a focus on readability, reduced distraction,
+          EasyView is designed for neurodivergent accessibility with a focus on readability, reduced distraction,
           and inclusive interaction.
         </p>
 

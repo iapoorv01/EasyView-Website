@@ -77,7 +77,7 @@ export default function CTA() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <motion.a
-              href="https://chromewebstore.google.com/detail/easypage/fkmaolnondclckcdeeanjophpnhndgkk"
+              href="https://chromewebstore.google.com/detail/easyview/fkmaolnondclckcdeeanjophpnhndgkk"
               target="_blank"
               rel="noopener noreferrer"
               className="group px-10 py-5 bg-white text-purple-600 font-black text-xl rounded-full shadow-2xl hover:shadow-white/50 transition-all"
@@ -86,12 +86,12 @@ export default function CTA() {
             >
               <span className="flex items-center gap-3 justify-center">
                 <Download className="w-6 h-6 group-hover:animate-bounce" />
-                Get EasyPage Free
+                Get EasyView Free
               </span>
             </motion.a>
 
             <motion.a
-              href="https://github.com/iapoorv01/EasyPage"
+              href="https://github.com/iapoorv01/EasyView"
               target="_blank"
               rel="noopener noreferrer"
               className="px-10 py-5 bg-white/20 backdrop-blur-lg text-white font-bold text-xl rounded-full border-2 border-white/50 hover:bg-white/30 transition-all"

@@ -123,7 +123,7 @@ export default function TechDetails() {
           className="mt-16 text-center"
         >
           <motion.a
-            href="https://github.com/iapoorv01/EasyPage"
+            href="https://github.com/iapoorv01/EasyView"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-gray-800 to-gray-900 text-white rounded-full shadow-xl hover:shadow-2xl transition-all"

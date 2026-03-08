@@ -9,7 +9,7 @@ export default function HowItWorks() {
       number: '1',
       icon: Download,
       title: 'Install the Extension',
-      description: 'Install EasyPage from the Chrome Web Store in a single step.',
+      description: 'Install EasyView from the Chrome Web Store in a single step.',
       color: 'from-purple-400 to-pink-400',
     },
     {
@@ -43,7 +43,7 @@ export default function HowItWorks() {
             Get Started in 3 Steps
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            EasyPage setup takes under two minutes and works across websites.
+            EasyView setup takes under two minutes and works across websites.
           </p>
         </motion.div>
 

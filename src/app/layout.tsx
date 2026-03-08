@@ -15,10 +15,10 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: 'EasyPage — Clarity for every brain 🧠',
+  title: 'EasyView — Clarity for every brain 🧠',
   description: 'The AI-Powered Cognitive Bridge for Web Accessibility. Make any webpage accessible for neurodivergent users with AI-powered features.',
   keywords: ['accessibility', 'neurodivergent', 'dyslexia', 'ADHD', 'autism', 'chrome extension', 'AI'],
-  authors: [{ name: 'EasyPage Team' }],
+  authors: [{ name: 'EasyView Team' }],
   icons: {
     icon: [
       { url: '/favicon.ico' },
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     apple: '/logo.png',
   },
   openGraph: {
-    title: 'EasyPage — Clarity for every brain',
+    title: 'EasyView — Clarity for every brain',
     description: 'AI-powered Chrome extension making the web accessible for neurodivergent users',
     type: 'website',
   },

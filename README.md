@@ -1,7 +1,10 @@
-# EasyPage 
+# EasyView 
 
-![EasyPage Logo](public/logo.png)
-
+<p align="center">
+  <a href="https://easyview.vercel.app/">
+    <img src="public/logo.png" alt="EasyView Logo" width="350"/>
+  </a>
+</p>
 > AI-powered accessibility experience built to make the web easier for neurodivergent minds.
 
 ![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js)
@@ -12,7 +15,7 @@
 
 ## ✨ Overview
 
-EasyPage is an interactive web interface that demonstrates how AI + thoughtful design can reduce cognitive friction.
+EasyView is an interactive web interface that demonstrates how AI + thoughtful design can reduce cognitive friction.
 It combines readability-focused UX, motion-aware controls, and feature-rich accessibility modules in one smooth experience.
 
 ## 🖼️ Visual Preview
@@ -48,11 +51,11 @@ It combines readability-focused UX, motion-aware controls, and feature-rich acce
 ## 📁 Project Structure
 
 ```text
-easypage/
+easyview/
 ├── public/
 │   ├── logo.png
-│   ├── EasyPage_Documentation.docx
-│   └── EasyPage_Privacy_Policy.docx
+│   ├── EasyView_Documentation.docx
+│   └── EasyView_Privacy_Policy.docx
 ├── src/
 │   ├── app/
 │   │   ├── page.tsx

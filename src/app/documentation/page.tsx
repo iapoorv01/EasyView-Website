@@ -6,7 +6,7 @@ export default function DocumentationPage() {
           Documentation
         </h1>
         <p className="text-gray-300 mb-8 leading-relaxed">
-          Welcome to EasyPage documentation. This guide explains how to use core features designed for better
+          Welcome to EasyView documentation. This guide explains how to use core features designed for better
           accessibility, focus, and reading comfort.
         </p>
 
@@ -14,7 +14,7 @@ export default function DocumentationPage() {
           <div>
             <h2 className="text-xl font-bold text-white mb-2">Getting Started</h2>
             <p>
-              Open EasyPage and choose your preferred readability settings. You can adjust layout style, visual
+              Open EasyView and choose your preferred readability settings. You can adjust layout style, visual
               emphasis, and content presentation to match your comfort.
             </p>
           </div>

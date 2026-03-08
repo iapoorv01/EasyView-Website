@@ -34,11 +34,11 @@ export default function Footer() {
             <div className="flex items-center gap-3 mb-4">
               <img
                 src="/logo.png"
-                alt="EasyPage logo"
+                alt="EasyView logo"
                 className="w-10 h-10 rounded-full object-contain bg-white p-0.5"
               />
               <h3 className="text-3xl font-black bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                EasyPage
+                EasyView
               </h3>
             </div>
             <p className="text-gray-400 leading-relaxed">
@@ -131,7 +131,7 @@ export default function Footer() {
             <span>for neurodivergent accessibility</span>
           </p>
           <p className="text-gray-500 text-sm mt-2">
-            © {new Date().getFullYear()} EasyPage. All rights reserved.
+            © {new Date().getFullYear()} EasyView. All rights reserved.
           </p>
         </motion.div>
       </div>

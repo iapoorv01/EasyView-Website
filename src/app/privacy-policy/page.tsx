@@ -6,14 +6,14 @@ export default function PrivacyPolicyPage() {
           Privacy Policy
         </h1>
         <p className="text-gray-300 mb-8 leading-relaxed">
-          This Privacy Policy explains how EasyPage handles user information with transparency and care.
+          This Privacy Policy explains how EasyView handles user information with transparency and care.
         </p>
 
         <section className="space-y-6 text-gray-300">
           <div>
             <h2 className="text-xl font-bold text-white mb-2">Information We Use</h2>
             <p>
-              EasyPage may process user-provided inputs only to deliver app functionality and improve user experience.
+              EasyView may process user-provided inputs only to deliver app functionality and improve user experience.
             </p>
           </div>
 

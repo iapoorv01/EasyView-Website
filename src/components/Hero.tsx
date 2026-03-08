@@ -44,10 +44,10 @@ export default function Hero() {
           >
             <img
               src="/logo.png"
-              alt="EasyPage logo"
+              alt="EasyView logo"
               className="w-9 h-9 rounded-full object-contain bg-white"
             />
-            <span className="text-sm font-semibold text-gray-700">EasyPage Accessibility Suite</span>
+            <span className="text-sm font-semibold text-gray-700">EasyView Accessibility Suite</span>
           </motion.div>
 
           <motion.h1
@@ -57,7 +57,7 @@ export default function Hero() {
             className="text-5xl md:text-7xl font-black mb-4 bg-gradient-to-r from-purple-600 via-pink-500 to-blue-500 bg-clip-text text-transparent"
             style={{ fontFamily: 'var(--font-display)' }}
           >
-            EasyPage
+            EasyView
           </motion.h1>
 
           <motion.p
@@ -106,7 +106,7 @@ export default function Hero() {
             className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center mb-7"
           >
             <motion.a
-              href="https://chromewebstore.google.com/detail/easypage/fkmaolnondclckcdeeanjophpnhndgkk"
+              href="https://chromewebstore.google.com/detail/easyview/fkmaolnondclckcdeeanjophpnhndgkk"
               target="_blank"
               rel="noopener noreferrer"
               className="group relative px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold text-lg rounded-full shadow-2xl hover:shadow-purple-500/50 transition-all"

@@ -32,7 +32,7 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    const storedTheme = localStorage.getItem('easypage-theme');
+    const storedTheme = localStorage.getItem('easyview-theme');
     if (storedTheme === 'light' || storedTheme === 'dark') {
       setTheme(storedTheme);
       return;
@@ -44,7 +44,7 @@ export default function Home() {
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', theme === 'dark');
-    localStorage.setItem('easypage-theme', theme);
+    localStorage.setItem('easyview-theme', theme);
   }, [theme]);
 
   return (
