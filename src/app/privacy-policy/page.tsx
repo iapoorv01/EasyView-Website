@@ -41,8 +41,8 @@ function Footer() {
         </div>
         <div className="footer-support">
           <h4>Support</h4>
-          <p>Have questions or feedback? Reach out at mradulg306@gmail.com and we will be happy to help.</p>
-          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=mradulg306@gmail.com" className="email-btn" target="_blank" rel="noopener noreferrer">Email Support</a>
+          <p>Have questions or feedback? Reach out at <strong>easyview.support@gmail.com</strong> or <strong>thinktech17@gmail.com</strong> and we will be happy to help.</p>
+          <a href="mailto:easyview.support@gmail.com" className="email-btn" target="_blank" rel="noopener noreferrer">Email Support</a>
         </div>
       </div>
       <div className="footer-bottom">
@@ -356,11 +356,12 @@ export default function PrivacyPolicyPage() {
             <h2>Contact</h2>
             <p>If you have any questions about this Privacy Policy or EasyView's data practices, please reach out:</p>
             <div className="contact-grid">
-              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=mradulg306@gmail.com" className="contact-card" target="_blank" rel="noopener noreferrer">
+              <a href="mailto:easyview.support@gmail.com" className="contact-card" target="_blank" rel="noopener noreferrer">
                 <div className="contact-icon">✉️</div>
                 <div>
                   <strong>Email</strong>
-                  <p>mradulg306@gmail.com</p>
+                  <p>easyview.support@gmail.com</p>
+                  <p className="mt-1">thinktech17@gmail.com</p>
                 </div>
               </a>
               <a href="https://github.com/iapoorv01/EasyView/issues" className="contact-card" target="_blank" rel="noopener noreferrer">

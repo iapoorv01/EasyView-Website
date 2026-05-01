@@ -59,13 +59,49 @@ const features = [
   },
 ];
 
+export default function Features() {
+  return (
+    <section className="py-20 px-6 relative bg-slate-950">
+      <div className="max-w-7xl mx-auto">
+        {/* Section Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-24"
+        >
+          <motion.div
+             className="inline-flex items-center gap-3 mb-6 px-5 py-2 bg-purple-500/10 border border-purple-500/20 rounded-full"
+          >
+             <span className="text-purple-400 font-black uppercase tracking-widest text-[10px]">What's Included</span>
+          </motion.div>
+          <h2 className="text-4xl md:text-6xl font-black mb-6 bg-gradient-to-r from-white via-purple-200 to-slate-400 bg-clip-text text-transparent tracking-tighter">
+            Everything You Need
+          </h2>
+          <p className="text-lg text-slate-400 max-w-2xl mx-auto font-medium">
+            Powerful tools designed to make reading and browsing easier for everyone.
+          </p>
+        </motion.div>
+
+        {/* Features Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16">
+          {features.map((feature, index) => (
+            <FeatureCard key={index} feature={feature} index={index} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function FeatureCard({ feature, index }: { feature: typeof features[0]; index: number }) {
   const [isHovered, setIsHovered] = useState(false);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  const rotateX = useTransform(mouseY, [-300, 300], [15, -15]);
-  const rotateY = useTransform(mouseX, [-300, 300], [-15, 15]);
+  const rotateX = useTransform(mouseY, [-300, 300], [10, -10]);
+  const rotateY = useTransform(mouseX, [-300, 300], [-10, 10]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -83,7 +119,7 @@ function FeatureCard({ feature, index }: { feature: typeof features[0]; index: n
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 50 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-100px' }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -96,134 +132,76 @@ function FeatureCard({ feature, index }: { feature: typeof features[0]; index: n
           rotateY,
           transformStyle: 'preserve-3d',
         }}
-        animate={{
-          y: [0, -15, 0],
-        }}
-        transition={{
-          duration: 5 + index,
-          repeat: Infinity,
-          ease: 'easeInOut',
-        }}
         onMouseMove={handleMouseMove}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={handleMouseLeave}
-        whileHover={{ scale: 1.05 }}
+        whileHover={{ scale: 1.02, y: -5 }}
+        transition={{ type: 'spring', stiffness: 300, damping: 20 }}
       >
         {/* Card */}
-        <div className="relative bg-white/70 backdrop-blur-xl rounded-3xl p-8 shadow-2xl border border-white/50 overflow-hidden">
+        <div className="relative bg-slate-900/60 backdrop-blur-2xl rounded-[32px] p-8 shadow-2xl border border-white/10 overflow-hidden group-hover:border-purple-500/30 transition-all duration-500">
           {/* Gradient Background */}
           <motion.div
-            className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}
-            style={{ transform: 'translateZ(-1px)' }}
+            className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-[0.05] transition-opacity duration-500`}
           />
 
-          {/* Floating Emoji */}
-          <motion.div
-            className="text-6xl mb-4"
-            animate={{
-              rotate: [0, 10, -10, 0],
-              y: isHovered ? -10 : 0,
-            }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              ease: 'easeInOut',
-            }}
-            style={{ transform: 'translateZ(20px)' }}
-          >
-            {feature.emoji}
-          </motion.div>
+          {/* Icon/Emoji Container */}
+          <div className="flex items-center gap-5 mb-6" style={{ transform: 'translateZ(30px)' }}>
+            <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${feature.color} flex items-center justify-center shadow-lg`}>
+              <feature.icon className="w-7 h-7 text-white" strokeWidth={2.5} />
+            </div>
+            <motion.span 
+              className="text-4xl"
+              animate={{ rotate: isHovered ? [0, 10, -10, 0] : 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              {feature.emoji}
+            </motion.span>
+          </div>
 
           {/* Title */}
-          <h3 className="text-2xl font-bold mb-3 text-gray-800" style={{ transform: 'translateZ(10px)' }}>
+          <h3 className="text-2xl font-black mb-3 text-white tracking-tighter" style={{ transform: 'translateZ(20px)' }}>
             {feature.title}
           </h3>
 
           {/* Description */}
-          <p className="text-gray-600 mb-6 leading-relaxed" style={{ transform: 'translateZ(5px)' }}>
+          <p className="text-slate-400 text-base mb-6 leading-relaxed font-medium" style={{ transform: 'translateZ(10px)' }}>
             {feature.description}
           </p>
 
           {/* Details List */}
-          <motion.ul
-            className="space-y-2"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{
+          <div 
+            className="space-y-4 overflow-hidden transition-all duration-500"
+            style={{ 
+              maxHeight: isHovered ? '200px' : '0px',
               opacity: isHovered ? 1 : 0,
-              height: isHovered ? 'auto' : 0,
+              transform: 'translateZ(5px)'
             }}
-            transition={{ duration: 0.3 }}
-            style={{ transform: 'translateZ(5px)' }}
           >
             {feature.details.map((detail, i) => (
-              <motion.li
+              <div
                 key={i}
-                className="flex items-start gap-2 text-sm text-gray-600"
-                initial={{ opacity: 0, x: -10 }}
-                animate={{
-                  opacity: isHovered ? 1 : 0,
-                  x: isHovered ? 0 : -10,
-                }}
-                transition={{ delay: i * 0.05 }}
+                className="flex items-center gap-3 text-sm text-slate-300 font-bold"
               >
-                <span className="text-purple-500 mt-0.5">✓</span>
+                <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${feature.color}`} />
                 <span>{detail}</span>
-              </motion.li>
+              </div>
             ))}
-          </motion.ul>
+          </div>
+
+          {/* Static Hint when not hovered */}
+          {!isHovered && (
+            <p className="text-xs font-black uppercase tracking-widest text-slate-600 animate-pulse">
+              Hover to explore details
+            </p>
+          )}
 
           {/* Glow Effect */}
           <motion.div
-            className={`absolute -inset-1 bg-gradient-to-br ${feature.color} rounded-3xl blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500`}
-            style={{ transform: 'translateZ(-2px)' }}
+            className={`absolute -inset-1 bg-gradient-to-br ${feature.color} rounded-[32px] blur-2xl opacity-0 group-hover:opacity-20 transition-opacity duration-500 -z-10`}
           />
         </div>
       </motion.div>
     </motion.div>
-  );
-}
-
-export default function Features() {
-  return (
-    <section className="py-32 px-6 relative">
-      <div className="max-w-7xl mx-auto">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-20"
-        >
-          <h2 className="text-5xl md:text-6xl font-black mb-6 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-            Four Powerful Modes
-          </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Each feature designed to reduce cognitive friction and make the web accessible for everyone
-          </p>
-        </motion.div>
-
-        {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-          {features.map((feature, index) => (
-            <FeatureCard key={index} feature={feature} index={index} />
-          ))}
-        </div>
-      </div>
-
-      {/* Decorative Elements */}
-      <motion.div
-        className="absolute top-0 right-0 w-96 h-96 bg-pink-300/10 rounded-full blur-3xl -z-10"
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.3, 0.5, 0.3],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: 'easeInOut',
-        }}
-      />
-    </section>
   );
 }

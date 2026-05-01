@@ -54,8 +54,8 @@ function Footer() {
         </div>
         <div className="footer-support">
           <h4>Support</h4>
-          <p>Have questions or feedback? Reach out at mradulg306@gmail.com and we will be happy to help.</p>
-          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=mradulg306@gmail.com" className="email-btn" target="_blank" rel="noopener noreferrer">Email Support</a>
+          <p>Have questions or feedback? Reach out at <strong>easyview.support@gmail.com</strong> or <strong>thinktech17@gmail.com</strong> and we will be happy to help.</p>
+          <a href="mailto:easyview.support@gmail.com" className="email-btn" target="_blank" rel="noopener noreferrer">Email Support</a>
         </div>
       </div>
       <div className="footer-bottom">
@@ -395,7 +395,7 @@ export default function AccessibilityGuidePage() {
             <h2>Need Help?</h2>
             <p>If a feature isn't working or you have feedback, the team is here to help.</p>
             <div className="cta-buttons">
-              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=mradulg306@gmail.com" className="btn-primary" target="_blank" rel="noopener noreferrer">Email Support</a>
+              <a href="mailto:easyview.support@gmail.com" className="btn-primary" target="_blank" rel="noopener noreferrer">Email Support</a>
               <a href="https://github.com/iapoorv01/EasyView" className="btn-secondary" target="_blank" rel="noopener noreferrer">GitHub Issues</a>
             </div>
           </section>

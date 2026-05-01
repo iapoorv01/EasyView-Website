@@ -41,8 +41,8 @@ function Footer() {
         </div>
         <div className="footer-support">
           <h4>Support</h4>
-          <p>Have questions or feedback? Reach out at mradulg306@gmail.com and we will be happy to help.</p>
-          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=mradulg306@gmail.com" className="email-btn" target="_blank" rel="noopener noreferrer">Email Support</a>
+          <p>Have questions or feedback? Reach out at <strong>easyview.support@gmail.com</strong> or <strong>thinktech17@gmail.com</strong> and we will be happy to help.</p>
+          <a href="mailto:easyview.support@gmail.com" className="email-btn" target="_blank" rel="noopener noreferrer">Email Support</a>
         </div>
       </div>
       <div className="footer-bottom">
@@ -396,7 +396,7 @@ chrome.storage.local.set({ geminiKey: userKey });
               },
               {
                 q: "Reading Mode not applying",
-                items: ["Some websites use aggressive CSS that may override EasyView styles", "Try using the 'Force Apply' option in Reading Mode settings", "Report the site URL to mradulg306@gmail.com"],
+                items: ["Some websites use aggressive CSS that may override EasyView styles", "Try using the 'Force Apply' option in Reading Mode settings", "Report the site URL to easyview.support@gmail.com"],
               },
             ].map((faq) => (
               <div className="faq-item" key={faq.q}>

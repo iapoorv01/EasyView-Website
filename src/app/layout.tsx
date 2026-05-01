@@ -34,14 +34,19 @@ export const metadata: Metadata = {
   },
 };
 
+import ExtensionSync from '@/components/ExtensionSync';
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${dmSans.variable} ${spaceGrotesk.variable}`}>
-      <body className="antialiased">{children}</body>
+    <html lang="en" className={`${dmSans.variable} ${spaceGrotesk.variable} dark`}>
+      <body className="antialiased bg-slate-950 text-slate-50" suppressHydrationWarning>
+        <ExtensionSync />
+        {children}
+      </body>
     </html>
   );
 }

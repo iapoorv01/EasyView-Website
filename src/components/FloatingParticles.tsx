@@ -18,10 +18,10 @@ export default function FloatingParticles() {
 
   useEffect(() => {
     const colors = [
-      'rgba(139, 127, 214, 0.3)', // purple
-      'rgba(110, 198, 255, 0.3)', // blue
-      'rgba(255, 138, 155, 0.3)', // pink
-      'rgba(255, 200, 124, 0.3)', // orange
+      'rgba(99, 102, 241, 0.15)', // indigo
+      'rgba(139, 92, 246, 0.15)', // violet
+      'rgba(59, 130, 246, 0.15)', // blue
+      'rgba(168, 85, 247, 0.15)', // purple
     ];
 
     const newParticles = Array.from({ length: 30 }, (_, i) => ({

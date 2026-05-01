@@ -27,7 +27,7 @@ export default function MouseFollower() {
       style={{
         left: cursorXSpring,
         top: cursorYSpring,
-        background: 'radial-gradient(circle, rgba(139, 127, 214, 0.8) 0%, rgba(139, 127, 214, 0) 70%)',
+        background: 'radial-gradient(circle, rgba(99, 102, 241, 0.6) 0%, rgba(99, 102, 241, 0) 80%)',
       }}
     />
   );

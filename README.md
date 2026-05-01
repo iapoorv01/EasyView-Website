@@ -85,8 +85,8 @@ easyview/
 
 For questions, feedback, or collaboration:
 
-- **Email**: [mradulg306@gmail.com](mailto:mradulg306@gmail.com)
-- **Gmail compose quick link**: [Open Gmail Compose](https://mail.google.com/mail/?view=cm&fs=1&to=mradulg306@gmail.com)
+- **Support Email**: [easyview.support@gmail.com](mailto:easyview.support@gmail.com)
+- **Developer Email**: [thinktech17@gmail.com](mailto:thinktech17@gmail.com)
 
 ## 📌 Roadmap Ideas
 

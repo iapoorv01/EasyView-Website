@@ -1,11 +1,17 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Sparkles, Download, Github, ShieldCheck, Volume2, CheckCircle2, Brain, WandSparkles } from 'lucide-react';
+import { Sparkles, Download, ShieldCheck, Volume2, CheckCircle2, Brain, WandSparkles } from 'lucide-react';
+import AuthStatus from './AuthStatus';
 
 export default function Hero() {
   return (
-    <section className="min-h-screen flex items-center justify-center relative px-6 pt-14 pb-20 overflow-hidden">
+    <section className="min-h-screen flex items-center justify-center relative px-6 pt-14 pb-20 overflow-hidden bg-slate-950">
+      {/* Auth Status Button in Header Area */}
+      <div className="absolute top-6 right-6 z-50">
+        <AuthStatus />
+      </div>
+
       {/* Floating Background Elements */}
       <motion.div
         className="absolute top-20 left-10 w-64 h-64 bg-purple-300/20 rounded-full blur-3xl"
@@ -40,14 +46,14 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/70 border border-purple-100 shadow-sm mb-8"
+            className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/10 border border-purple-100/20 shadow-sm mb-8"
           >
             <img
               src="/logo.png"
               alt="EasyView logo"
-              className="w-9 h-9 rounded-full object-contain bg-white"
+              className="w-9 h-9 object-contain"
             />
-            <span className="text-sm font-semibold text-gray-700">EasyView Accessibility Suite</span>
+            <span className="text-sm font-semibold text-slate-300">EasyView Accessibility Suite</span>
           </motion.div>
 
           <motion.h1
@@ -64,7 +70,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-2xl md:text-3xl mb-4 text-gray-700 font-medium"
+            className="text-2xl md:text-3xl mb-4 text-slate-200 font-medium"
           >
             Clarity for every brain
           </motion.p>
@@ -73,7 +79,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-lg md:text-xl mb-7 text-gray-600 max-w-2xl lg:mx-0 mx-auto"
+            className="text-lg md:text-xl mb-7 text-slate-400 max-w-2xl lg:mx-0 mx-auto"
           >
             Privacy-first accessibility tools for readable content, calmer browsing, and better comprehension on any website.
           </motion.p>
@@ -91,10 +97,10 @@ export default function Hero() {
             ].map((item, index) => (
               <div
                 key={index}
-                className="inline-flex items-center gap-2 px-4 py-2 bg-white/70 backdrop-blur-xl rounded-full border border-white/70 shadow-sm"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-xl rounded-full border border-white/10 shadow-sm"
               >
                 <item.icon className="w-4 h-4 text-purple-500" />
-                <span className="text-sm text-gray-700 font-medium">{item.text}</span>
+                <span className="text-sm text-slate-300 font-medium">{item.text}</span>
               </div>
             ))}
           </motion.div>
@@ -128,19 +134,17 @@ export default function Hero() {
                 Add to Chrome - It&apos;s Free
               </span>
             </motion.a>
-
-            
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 1 }}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-white/70 backdrop-blur-xl rounded-full shadow-lg border border-purple-200"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-white/5 backdrop-blur-xl rounded-full shadow-lg border border-purple-500/20"
             whileHover={{ y: -3 }}
           >
             <Sparkles className="w-5 h-5 text-purple-500" />
-            <span className="text-gray-700 font-semibold">
+            <span className="text-slate-300 font-semibold">
               Helping 20% of the population browse better
             </span>
           </motion.div>
@@ -156,9 +160,9 @@ export default function Hero() {
               { value: '<2 min', label: 'Setup time' },
               { value: '24/7', label: 'Works on webpages' },
             ].map((stat, index) => (
-              <div key={index} className="bg-white/65 backdrop-blur-xl rounded-2xl border border-white/70 p-3 shadow-sm">
-                <p className="text-lg font-black text-gray-800">{stat.value}</p>
-                <p className="text-xs text-gray-600">{stat.label}</p>
+              <div key={index} className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 p-3 shadow-sm">
+                <p className="text-lg font-black text-white">{stat.value}</p>
+                <p className="text-[10px] text-slate-500 uppercase tracking-wider">{stat.label}</p>
               </div>
             ))}
           </motion.div>
@@ -170,40 +174,40 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.5 }}
           className="space-y-5"
         >
-          <div className="bg-white/75 backdrop-blur-xl rounded-3xl p-4 shadow-xl border border-white/60">
+          <div className="bg-slate-900/60 backdrop-blur-xl rounded-3xl p-4 shadow-xl border border-white/10">
             <div className="flex items-center gap-2 mb-3 px-1">
-              <span className="w-2.5 h-2.5 rounded-full bg-red-400" />
-              <span className="w-2.5 h-2.5 rounded-full bg-yellow-400" />
-              <span className="w-2.5 h-2.5 rounded-full bg-green-400" />
-              <span className="ml-2 text-xs text-gray-500">Live Reading Preview</span>
+              <span className="w-2.5 h-2.5 rounded-full bg-red-400/60" />
+              <span className="w-2.5 h-2.5 rounded-full bg-yellow-400/60" />
+              <span className="w-2.5 h-2.5 rounded-full bg-green-400/60" />
+              <span className="ml-2 text-xs text-slate-500">Live Reading Preview</span>
             </div>
             <img
               src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80"
               alt="Clean and readable web content"
               className="w-full h-56 object-cover rounded-2xl"
             />
-            <p className="text-sm text-gray-600 mt-3 px-1">Adaptive typography and overlays for better readability.</p>
+            <p className="text-sm text-slate-400 mt-3 px-1">Adaptive typography and overlays for better readability.</p>
           </div>
 
           <div className="grid sm:grid-cols-2 gap-5">
-            <div className="bg-white/75 backdrop-blur-xl rounded-3xl p-5 shadow-xl border border-white/60">
-              <ShieldCheck className="w-8 h-8 text-green-500 mb-3" />
-              <h3 className="font-bold text-gray-800 mb-1">Sensory Shield</h3>
-              <p className="text-sm text-gray-600">Disables distracting motion, flashes, and autoplay media.</p>
+            <div className="bg-slate-900/60 backdrop-blur-xl rounded-3xl p-5 shadow-xl border border-white/10">
+              <ShieldCheck className="w-8 h-8 text-green-400 mb-3" />
+              <h3 className="font-bold text-white mb-1">Sensory Shield</h3>
+              <p className="text-sm text-slate-500">Disables distracting motion, flashes, and autoplay media.</p>
             </div>
-            <div className="bg-white/75 backdrop-blur-xl rounded-3xl p-5 shadow-xl border border-white/60">
-              <Volume2 className="w-8 h-8 text-blue-500 mb-3" />
-              <h3 className="font-bold text-gray-800 mb-1">Text-to-Speech</h3>
-              <p className="text-sm text-gray-600">Voice options, speed control, and word highlighting support.</p>
+            <div className="bg-slate-900/60 backdrop-blur-xl rounded-3xl p-5 shadow-xl border border-white/10">
+              <Volume2 className="w-8 h-8 text-blue-400 mb-3" />
+              <h3 className="font-bold text-white mb-1">Text-to-Speech</h3>
+              <p className="text-sm text-slate-500">Voice options, speed control, and word highlighting support.</p>
             </div>
           </div>
 
-          <div className="bg-white/75 backdrop-blur-xl rounded-3xl p-5 shadow-xl border border-white/60">
-            <h3 className="font-bold text-gray-800 mb-3">What users get instantly</h3>
+          <div className="bg-slate-900/60 backdrop-blur-xl rounded-3xl p-5 shadow-xl border border-white/10">
+            <h3 className="font-bold text-white mb-3">What users get instantly</h3>
             <div className="space-y-2">
               {['Dyslexia-friendly typography', 'Jargon Decoder + simplification', 'Local-first privacy controls'].map((item, index) => (
-                <div key={index} className="flex items-center gap-2 text-sm text-gray-700">
-                  <CheckCircle2 className="w-4 h-4 text-purple-500" />
+                <div key={index} className="flex items-center gap-2 text-sm text-slate-300">
+                  <CheckCircle2 className="w-4 h-4 text-purple-400" />
                   <span>{item}</span>
                 </div>
               ))}
@@ -224,9 +228,9 @@ export default function Hero() {
           ease: 'easeInOut',
         }}
       >
-        <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex items-start justify-center p-1">
+        <div className="w-6 h-10 border-2 border-slate-700 rounded-full flex items-start justify-center p-1">
           <motion.div
-            className="w-1.5 h-1.5 bg-gray-400 rounded-full"
+            className="w-1.5 h-1.5 bg-slate-500 rounded-full"
             animate={{
               y: [0, 16, 0],
             }}

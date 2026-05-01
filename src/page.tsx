@@ -17,7 +17,6 @@ import MouseFollower from './components/MouseFollower';
 
 export default function Home() {
   const [reducedMotion, setReducedMotion] = useState(false);
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -31,27 +30,9 @@ export default function Home() {
     return () => mediaQuery.removeEventListener('change', handleChange);
   }, []);
 
-  useEffect(() => {
-    const storedTheme = localStorage.getItem('easyview-theme');
-    if (storedTheme === 'light' || storedTheme === 'dark') {
-      setTheme(storedTheme);
-      return;
-    }
-
-    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    setTheme(systemPrefersDark ? 'dark' : 'light');
-  }, []);
-
-  useEffect(() => {
-    document.documentElement.classList.toggle('dark', theme === 'dark');
-    localStorage.setItem('easyview-theme', theme);
-  }, [theme]);
-
   return (
     <motion.div
-      className={`min-h-screen relative overflow-hidden theme-root transition-colors duration-300 ${
-        theme === 'dark' ? 'bg-slate-900' : 'bg-[rgb(240,244,255)]'
-      }`}
+      className="min-h-screen relative overflow-hidden bg-slate-950 text-slate-50 transition-colors duration-300"
     >
       {!reducedMotion && <FloatingParticles />}
       {!reducedMotion && <MouseFollower />}
@@ -72,26 +53,10 @@ export default function Home() {
       {/* Reduced Motion Toggle */}
       <button
         onClick={() => setReducedMotion(!reducedMotion)}
-        className={`fixed bottom-6 left-6 z-50 px-4 py-2 backdrop-blur-lg rounded-full shadow-lg text-sm font-medium transition-all ${
-          theme === 'dark'
-            ? 'bg-slate-800/80 text-slate-100 hover:bg-slate-700'
-            : 'bg-white/80 text-gray-700 hover:bg-white'
-        }`}
+        className="fixed bottom-6 left-6 z-50 px-4 py-2 backdrop-blur-lg rounded-full shadow-lg text-sm font-medium transition-all bg-slate-800/80 text-slate-100 hover:bg-slate-700"
         aria-label="Toggle animations"
       >
         {reducedMotion ? '🎬 Enable Animations' : '🎬 Reduce Motion'}
-      </button>
-
-      <button
-        onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-        className={`fixed bottom-6 right-6 z-50 px-4 py-2 backdrop-blur-lg rounded-full shadow-lg text-sm font-medium transition-all ${
-          theme === 'dark'
-            ? 'bg-slate-800/80 text-slate-100 hover:bg-slate-700'
-            : 'bg-white/80 text-gray-700 hover:bg-white'
-        }`}
-        aria-label="Toggle theme"
-      >
-        {theme === 'dark' ? '☀️ Light Theme' : '🌙 Dark Theme'}
       </button>
     </motion.div>
   );
