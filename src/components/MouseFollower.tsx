@@ -7,7 +7,8 @@ export default function MouseFollower() {
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
 
-  const springConfig = { damping: 25, stiffness: 150 };
+  // Looser spring = fewer frames needed to settle
+  const springConfig = { damping: 30, stiffness: 120, mass: 0.5 };
   const cursorXSpring = useSpring(cursorX, springConfig);
   const cursorYSpring = useSpring(cursorY, springConfig);
 
@@ -16,18 +17,19 @@ export default function MouseFollower() {
       cursorX.set(e.clientX - 16);
       cursorY.set(e.clientY - 16);
     };
-
-    window.addEventListener('mousemove', moveCursor);
+    window.addEventListener('mousemove', moveCursor, { passive: true });
     return () => window.removeEventListener('mousemove', moveCursor);
   }, [cursorX, cursorY]);
 
   return (
     <motion.div
-      className="fixed w-8 h-8 rounded-full pointer-events-none z-50 mix-blend-difference"
+      className="fixed w-8 h-8 rounded-full pointer-events-none z-50"
       style={{
         left: cursorXSpring,
         top: cursorYSpring,
-        background: 'radial-gradient(circle, rgba(99, 102, 241, 0.6) 0%, rgba(99, 102, 241, 0) 80%)',
+        // Removed mix-blend-difference — forces stacking context recalc every frame
+        background: 'radial-gradient(circle, rgba(99, 102, 241, 0.35) 0%, rgba(99, 102, 241, 0) 80%)',
+        willChange: 'transform',
       }}
     />
   );

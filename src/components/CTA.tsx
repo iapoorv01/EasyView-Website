@@ -1,120 +1,85 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Download, Github } from 'lucide-react';
+import { Chrome, Github } from 'lucide-react';
 
 export default function CTA() {
   return (
-    <section className="py-24 px-6 relative overflow-hidden bg-slate-950">
-      {/* Animated Dark Background */}
+    <section className="py-28 px-6 relative overflow-hidden bg-[#060914]">
+      {/* Ambient background */}
       <motion.div
-        className="absolute inset-0 bg-gradient-to-br from-indigo-900 via-slate-900 to-slate-950"
-        animate={{
-          backgroundPosition: ['0% 0%', '100% 100%', '0% 0%'],
-        }}
-        transition={{
-          duration: 20,
-          repeat: Infinity,
-          ease: 'linear',
-        }}
+        className="absolute inset-0"
+        style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 50%, rgba(59,130,246,0.07) 0%, transparent 70%)' }}
+        animate={{ opacity: [0.6, 1, 0.6] }} transition={{ duration: 6, repeat: Infinity }}
       />
+      {/* Top edge line */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-px bg-gradient-to-r from-transparent via-blue-500/30 to-transparent" />
 
-      {/* Floating Orbs with Dark Glow */}
-      <motion.div
-        className="absolute top-10 left-10 w-96 h-96 bg-purple-600/10 rounded-full blur-[120px]"
-        animate={{
-          y: [0, -60, 0],
-          x: [0, 40, 0],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: 'easeInOut',
-        }}
-      />
-      <motion.div
-        className="absolute bottom-10 right-10 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[150px]"
-        animate={{
-          y: [0, 60, 0],
-          x: [0, -40, 0],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: 'easeInOut',
-        }}
-      />
-
-      <div className="max-w-4xl mx-auto text-center relative z-10">
+      <div className="max-w-4xl mx-auto relative z-10 text-center">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }} transition={{ duration: 0.7 }}
         >
+          {/* Emotional headline */}
           <motion.div
             className="text-6xl mb-8"
-            animate={{
-              rotate: [0, 5, -5, 0],
-              scale: [1, 1.1, 1],
-            }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              ease: 'easeInOut',
-            }}
+            animate={{ scale: [1, 1.08, 1], rotate: [0, 3, -3, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
           >
             🧠
           </motion.div>
 
-          <h2 className="text-4xl md:text-6xl font-black mb-6 text-white tracking-tighter">
-            Ready to Read Better?
+          <h2 className="text-5xl md:text-7xl font-black tracking-tighter text-white leading-tight mb-5">
+            The problem was<br />
+            <span className="bg-gradient-to-r from-blue-400 via-cyan-300 to-orange-400 bg-clip-text text-transparent">
+              never you.
+            </span>
           </h2>
 
-          <p className="text-lg md:text-xl mb-10 text-slate-400 max-w-2xl mx-auto font-medium">
-            Join thousands of users who make the web easier to read every day. Install EasyView in seconds.
+          <p className="text-xl md:text-2xl text-slate-400 font-medium mb-12 max-w-xl mx-auto leading-relaxed">
+            The web just needed to adapt.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-5 justify-center">
+          {/* CTAs */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <motion.a
               href="https://chromewebstore.google.com/detail/easyview/fkmaolnondclckcdeeanjophpnhndgkk"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-black text-xs uppercase tracking-widest rounded-2xl shadow-2xl hover:shadow-indigo-500/40 transition-all"
-              whileHover={{ scale: 1.05, y: -5 }}
-              whileTap={{ scale: 0.95 }}
+              target="_blank" rel="noopener noreferrer"
+              className="group relative flex items-center gap-3 px-8 py-5 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-bold text-lg rounded-2xl shadow-2xl hover:shadow-blue-500/40 transition-all overflow-hidden"
+              whileHover={{ scale: 1.04, y: -3 }} whileTap={{ scale: 0.97 }}
             >
-              <span className="flex items-center gap-3 justify-center">
-                <Download className="w-4 h-4 group-hover:animate-bounce" />
-                Add to Chrome
-              </span>
+              {/* Shimmer effect */}
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12"
+                initial={{ x: '-100%' }}
+                whileHover={{ x: '200%' }}
+                transition={{ duration: 0.6 }}
+              />
+              <Chrome className="w-5 h-5 relative z-10" />
+              <span className="relative z-10">Try EasyView Now</span>
             </motion.a>
 
             <motion.a
               href="https://github.com/iapoorv01/EasyView"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-4 bg-white/5 backdrop-blur-xl text-white font-black text-xs uppercase tracking-widest rounded-2xl border border-white/10 hover:bg-white/10 transition-all"
-              whileHover={{ scale: 1.05, y: -5 }}
-              whileTap={{ scale: 0.95 }}
+              target="_blank" rel="noopener noreferrer"
+              className="flex items-center gap-3 px-8 py-5 bg-white/5 backdrop-blur-xl border border-white/10 text-white font-semibold text-base rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all"
+              whileHover={{ scale: 1.04, y: -3 }} whileTap={{ scale: 0.97 }}
             >
-              <span className="flex items-center gap-3 justify-center">
-                <Github className="w-4 h-4" />
-                View on GitHub
-              </span>
+              <Github className="w-5 h-5" />
+              View on GitHub
             </motion.a>
           </div>
 
+          {/* Trust line */}
           <motion.div
-            className="mt-12 flex flex-wrap justify-center gap-8 text-slate-500 text-[10px] font-black uppercase tracking-[0.2em]"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4 }}
+            initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
+            viewport={{ once: true }} transition={{ delay: 0.3 }}
+            className="flex flex-wrap justify-center gap-6 text-slate-600 text-xs font-bold uppercase tracking-widest"
           >
-            <span>Private & Secure</span>
-            <span>Completely Free</span>
-            <span>Open Source</span>
+            <span>🔒 Private & Secure</span>
+            <span>🆓 Completely Free</span>
+            <span>⚡ Installs in Seconds</span>
+            <span>🌐 Works Everywhere</span>
           </motion.div>
         </motion.div>
       </div>

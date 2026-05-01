@@ -4,12 +4,11 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Hero from './components/Hero';
 import ProblemStatement from './components/ProblemStatement';
+import SolutionSection from './components/SolutionSection';
 import Features from './components/Features';
-import ProductOverview from './components/ProductOverview';
-import InteractiveDemo from './components/InteractiveDemo';
-import ImpactStats from './components/ImpactStats';
 import HowItWorks from './components/HowItWorks';
-import TechDetails from './components/TechDetails';
+import PremiumSection from './components/PremiumSection';
+import ImpactStats from './components/ImpactStats';
 import CTA from './components/CTA';
 import Footer from './components/Footer';
 import FloatingParticles from './components/FloatingParticles';
@@ -19,41 +18,42 @@ export default function Home() {
   const [reducedMotion, setReducedMotion] = useState(false);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    setReducedMotion(mediaQuery.matches);
-
-    const handleChange = (e: MediaQueryListEvent) => {
-      setReducedMotion(e.matches);
-    };
-
-    mediaQuery.addEventListener('change', handleChange);
-    return () => mediaQuery.removeEventListener('change', handleChange);
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setReducedMotion(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setReducedMotion(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
   }, []);
 
   return (
-    <motion.div
-      className="min-h-screen relative overflow-hidden bg-slate-950 text-slate-50 transition-colors duration-300"
-    >
+    <motion.div className="min-h-screen relative overflow-hidden bg-slate-950 text-slate-50">
       {!reducedMotion && <FloatingParticles />}
       {!reducedMotion && <MouseFollower />}
-      
+
       <div className="relative z-10">
+        {/* 1. Emotional entry */}
         <Hero />
+        {/* 2. The pain */}
         <ProblemStatement />
-        <ProductOverview />
+        {/* 3. The transformation */}
+        <SolutionSection />
+        {/* 4. Feature depth */}
         <Features />
-        <InteractiveDemo />
-        <ImpactStats />
+        {/* 5. Simple onboarding */}
         <HowItWorks />
-        <TechDetails />
+        {/* 6. Premium differentiation */}
+        <PremiumSection />
+        {/* 7. Trust & social proof */}
+        <ImpactStats />
+        {/* 8. Emotional close */}
         <CTA />
         <Footer />
       </div>
 
-      {/* Reduced Motion Toggle */}
+      {/* Reduced Motion toggle */}
       <button
         onClick={() => setReducedMotion(!reducedMotion)}
-        className="fixed bottom-6 left-6 z-50 px-4 py-2 backdrop-blur-lg rounded-full shadow-lg text-sm font-medium transition-all bg-slate-800/80 text-slate-100 hover:bg-slate-700"
+        className="fixed bottom-6 left-6 z-50 px-4 py-2 backdrop-blur-lg rounded-full shadow-lg text-xs font-medium transition-all bg-slate-800/80 text-slate-300 hover:bg-slate-700 border border-white/10"
         aria-label="Toggle animations"
       >
         {reducedMotion ? '🎬 Enable Animations' : '🎬 Reduce Motion'}
