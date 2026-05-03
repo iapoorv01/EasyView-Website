@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { FileText, Heart } from 'lucide-react';
+import { FileText, Heart, MessageSquare, Linkedin } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -37,9 +37,12 @@ export default function Footer() {
                 alt="EasyView logo"
                 className="w-10 h-10 object-contain"
               />
-              <h3 className="text-2xl font-black bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent tracking-tighter">
+              <h3 className="text-2xl font-black text-white tracking-tight">
                 EasyView
               </h3>
+            </div>
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-full mb-4">
+              <span className="text-[10px] font-black uppercase tracking-widest text-blue-400">👨‍🎓 Student-Led Initiative</span>
             </div>
             <p className="text-slate-500 text-sm leading-relaxed font-medium">
               Making the web accessible for everyone through better design and smarter tools.
@@ -78,6 +81,8 @@ export default function Footer() {
                 { name: 'Accessibility Guide', href: '/accessibility-guide', icon: FileText },
                 { name: 'Documentation', href: '/documentation', icon: FileText },
                 { name: 'Privacy Policy', href: '/privacy-policy', icon: FileText },
+                { name: 'Terms of Service', href: '/terms-of-service', icon: FileText },
+                { name: 'Give Feedback', href: '/contact', icon: MessageSquare },
               ].map((link, i) => (
                 <li key={i}>
                   <motion.a
@@ -104,16 +109,27 @@ export default function Footer() {
             <p className="text-slate-500 text-sm mb-6 font-medium leading-relaxed">
               Having trouble? Our team is here to help you get the most out of EasyView.
             </p>
-            <motion.a
-              href="mailto:easyview.support@gmail.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/10 rounded-2xl text-xs font-black uppercase tracking-widest transition-all"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              Email Us
-            </motion.a>
+            <div className="flex flex-wrap items-center gap-4">
+              <motion.a
+                href="/contact"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/10 rounded-2xl text-xs font-black uppercase tracking-widest transition-all shrink-0"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                Contact Us
+              </motion.a>
+              <motion.a
+                href="https://www.linkedin.com/in/-apoorv-/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-12 h-12 flex items-center justify-center bg-[#0A66C2]/10 hover:bg-[#0A66C2]/20 border border-[#0A66C2]/30 rounded-2xl transition-all shrink-0 group"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                title="Connect with Apoorv on LinkedIn"
+              >
+                <Linkedin className="w-5 h-5 text-[#0A66C2] group-hover:scale-110 transition-transform" />
+              </motion.a>
+            </div>
           </motion.div>
         </div>
 

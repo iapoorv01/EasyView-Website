@@ -32,6 +32,9 @@ export const metadata: Metadata = {
     description: 'AI-powered Chrome extension making the web accessible for neurodivergent users',
     type: 'website',
   },
+  verification: {
+    google: '-DRxZt3O3T6BOH7qi6Nuvney9gn6WKl7vwM1soILS_8',
+  },
 };
 
 import ExtensionSync from '@/components/ExtensionSync';

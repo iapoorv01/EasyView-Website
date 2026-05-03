@@ -295,7 +295,7 @@ export default function Features() {
 
             <div className="grid lg:grid-cols-2 gap-6">
               {/* Left: feature mini-cards */}
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {current.features.map((f, i) => (
                   <motion.div key={i} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.06 }}
                     className="bg-slate-900/60 rounded-2xl p-4 border border-white/8 hover:border-white/15 transition-colors"

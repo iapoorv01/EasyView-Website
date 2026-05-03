@@ -38,7 +38,7 @@ export default function Hero() {
           {/* Emotional headline */}
           <motion.h1
             initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-5xl md:text-6xl xl:text-7xl font-black leading-[1.08] tracking-tighter mb-6 text-white"
+            className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-black leading-[1.08] tracking-tighter mb-6 text-white break-words"
           >
             Not every mind<br />
             <span className="bg-gradient-to-r from-blue-400 via-cyan-300 to-orange-400 bg-clip-text text-transparent">
@@ -66,7 +66,7 @@ export default function Hero() {
 
           <motion.div
             initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.65 }}
-            className="flex flex-col sm:flex-row gap-4 items-start sm:items-center mb-8"
+            className="flex flex-col sm:flex-row gap-4 items-stretch sm:items-center mb-8"
           >
             <motion.a
               href="https://chromewebstore.google.com/detail/easyview/fkmaolnondclckcdeeanjophpnhndgkk"
@@ -133,14 +133,16 @@ function BeforeAfterVisual({ showAfter, setShowAfter }: { showAfter: boolean; se
   return (
     <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900">
       {/* Browser chrome */}
-      <div className="bg-slate-800/90 px-4 py-3 flex items-center gap-2 border-b border-white/5">
-        <span className="w-3 h-3 rounded-full bg-red-400/70" />
-        <span className="w-3 h-3 rounded-full bg-yellow-400/70" />
-        <span className="w-3 h-3 rounded-full bg-green-400/70" />
-        <div className="flex-1 mx-3 bg-slate-700/80 rounded-full px-3 py-1 text-[11px] text-slate-400 truncate">
+      <div className="bg-slate-800/90 px-3 sm:px-4 py-3 flex items-center gap-2 border-b border-white/5">
+        <div className="flex gap-1 sm:gap-1.5 shrink-0">
+          <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-red-400/70" />
+          <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-yellow-400/70" />
+          <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-400/70" />
+        </div>
+        <div className="flex-1 mx-2 sm:mx-3 bg-slate-700/80 rounded-full px-3 py-1 text-[9px] sm:text-[11px] text-slate-400 truncate">
           health.example.com/understanding-your-diagnosis
         </div>
-        <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-blue-500/20 rounded-lg border border-blue-500/30 shrink-0">
+        <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1.5 bg-blue-500/20 rounded-lg border border-blue-500/30 shrink-0">
           <Eye className="w-3 h-3 text-blue-400" />
           <span className="text-[11px] text-blue-400 font-bold">EasyView</span>
         </div>
@@ -186,10 +188,10 @@ function BeforeAfterVisual({ showAfter, setShowAfter }: { showAfter: boolean; se
         <motion.div
           key={showAfter ? 'after-label' : 'before-label'}
           initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}
-          className={`flex items-center gap-2 text-xs font-bold px-4 py-1.5 rounded-full border ${showAfter ? 'bg-blue-500/15 text-blue-300 border-blue-500/25' : 'bg-red-500/15 text-red-300 border-red-500/25'}`}
+          className={`flex items-center gap-2 text-[10px] sm:text-xs font-bold px-3 sm:px-4 py-1.5 rounded-full border text-center ${showAfter ? 'bg-blue-500/15 text-blue-300 border-blue-500/25' : 'bg-red-500/15 text-red-300 border-red-500/25'}`}
         >
-          <span className={`w-1.5 h-1.5 rounded-full ${showAfter ? 'bg-blue-400' : 'bg-red-400'} animate-pulse`} />
-          {showAfter ? '✨ With EasyView — Clear & Accessible' : '⚠️ Without EasyView — Hard to Read'}
+          <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${showAfter ? 'bg-blue-400' : 'bg-red-400'} animate-pulse`} />
+          <span className="truncate">{showAfter ? '✨ Clear & Accessible' : '⚠️ Hard to Read'}</span>
         </motion.div>
       </div>
     </div>
@@ -237,7 +239,7 @@ function BeforePage() {
         </div>
 
         {/* Sidebar */}
-        <div className="w-24 bg-gray-50 border-l border-gray-200 p-2 shrink-0 overflow-hidden">
+        <div className="hidden sm:block w-24 bg-gray-50 border-l border-gray-200 p-2 shrink-0 overflow-hidden">
           <div className="bg-blue-600 text-white text-[6px] p-1.5 text-center font-black mb-2 rounded-sm">
             ADVERTISEMENT
           </div>
@@ -262,12 +264,12 @@ function AfterPage() {
   return (
     <div className="bg-slate-950 h-full overflow-hidden p-5">
       {/* EasyView reader toolbar */}
-      <div className="flex items-center gap-2 mb-4 pb-3 border-b border-white/8">
-        <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-blue-500/15 border border-blue-500/25 rounded-lg">
+      <div className="flex flex-wrap items-center gap-2 mb-4 pb-3 border-b border-white/8">
+        <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-blue-500/15 border border-blue-500/25 rounded-lg shrink-0">
           <Eye className="w-3 h-3 text-blue-400" />
-          <span className="text-[10px] text-blue-300 font-bold">Reader Mode</span>
+          <span className="text-[10px] text-blue-300 font-bold hidden sm:inline">Reader Mode</span>
         </div>
-        <div className="flex gap-1.5 ml-auto">
+        <div className="flex flex-wrap gap-1.5 ml-auto">
           <div className="px-2 py-1 bg-white/5 rounded-lg text-[9px] text-slate-400 font-medium border border-white/8">🔊 Listen</div>
           <div className="px-2 py-1 bg-white/5 rounded-lg text-[9px] text-slate-400 font-medium border border-white/8">Aa 1.3×</div>
           <div className="px-2 py-1 bg-white/5 rounded-lg text-[9px] text-slate-400 font-medium border border-white/8">🛡️ Calm</div>
