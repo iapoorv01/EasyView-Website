@@ -25,18 +25,27 @@ function ReadingDemo() {
         <AnimatePresence mode="wait">
           <motion.div key={mode} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
             {mode === 'normal' && (
-              <p className="text-slate-400 text-sm leading-relaxed">{text}</p>
+              <p className="text-slate-400 text-sm leading-[2]">{text}</p>
             )}
             {mode === 'dyslexia' && (
-              <p className="text-slate-200 text-sm leading-loose" style={{ fontFamily: 'Arial Rounded MT Bold, Arial, sans-serif', letterSpacing: '0.06em', wordSpacing: '0.12em', lineHeight: '2' }}>
+              <p className="text-slate-200 text-sm leading-[2]" style={{ fontFamily: 'var(--font-body), sans-serif', letterSpacing: '0.04em', wordSpacing: '0.08em' }}>
                 {text}
               </p>
             )}
             {mode === 'bionic' && (
-              <p className="text-slate-200 text-sm leading-relaxed" style={{ lineHeight: '1.8' }}>
+              <p className="text-slate-300 text-sm leading-[2]">
                 {text.split(' ').map((word, i) => {
-                  const mid = Math.ceil(word.length / 2);
-                  return <span key={i}><strong className="text-white font-black">{word.slice(0, mid)}</strong>{word.slice(mid)} </span>;
+                  // Standard Bionic Fixation: 1 char for short, 2 for med, 3 for long
+                  let fix = 1;
+                  if (word.length > 5) fix = 3;
+                  else if (word.length > 3) fix = 2;
+
+                  return (
+                    <span key={i} className="inline-block mr-1">
+                      <strong className="text-white font-bold">{word.slice(0, fix)}</strong>
+                      <span className="opacity-70">{word.slice(fix)}</span>
+                    </span>
+                  );
                 })}
               </p>
             )}

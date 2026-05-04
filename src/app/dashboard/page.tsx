@@ -107,9 +107,12 @@ export default function DashboardPage() {
     );
   }
 
-  const remainingDays = profile?.premium_expires_at
-    ? Math.ceil((new Date(profile.premium_expires_at).getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24))
+  const timeRemaining = profile?.premium_expires_at
+    ? new Date(profile.premium_expires_at).getTime() - new Date().getTime()
     : 0;
+
+  const remainingDays = Math.ceil(timeRemaining / (1000 * 60 * 60 * 24));
+  const remainingHours = Math.ceil(timeRemaining / (1000 * 60 * 60));
 
   return (
     <div className="min-h-screen bg-[#0a0f1d] text-white p-6 md:p-12 font-sans relative overflow-hidden">
@@ -118,8 +121,8 @@ export default function DashboardPage() {
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px] -z-10" />
 
       <div className="max-w-6xl mx-auto">
-        {/* Trial Notice */}
-        {profile?.is_premium && remainingDays === 1 && (
+        {/* Trial/Expiry Notice */}
+        {profile?.is_premium && timeRemaining > 0 && timeRemaining <= 24 * 60 * 60 * 1000 && (
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -129,8 +132,17 @@ export default function DashboardPage() {
               <Sparkles className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h4 className="text-sm font-black text-purple-200 uppercase tracking-widest">Free Trial Activated!</h4>
-              <p className="text-xs text-slate-300">Welcome to EasyView Pro. You have 24 hours of unlimited access to all premium features.</p>
+              {profile.premium_since && (new Date().getTime() - new Date(profile.premium_since).getTime() < 24 * 60 * 60 * 1000) ? (
+                <>
+                  <h4 className="text-sm font-black text-purple-200 uppercase tracking-widest">Free Trial Activated!</h4>
+                  <p className="text-xs text-slate-300">Welcome to EasyView Pro. You have {remainingHours} hours left of 24 for unlimited access to all premium features.</p>
+                </>
+              ) : (
+                <>
+                  <h4 className="text-sm font-black text-purple-200 uppercase tracking-widest">Subscription Ending Soon</h4>
+                  <p className="text-xs text-slate-300">You have {remainingHours} hours of premium access remaining. {remainingHours <= 12 ? 'Renew now to maintain your neural enhancements!' : ''}</p>
+                </>
+              )}
             </div>
           </motion.div>
         )}
@@ -194,7 +206,7 @@ export default function DashboardPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-10">
                 <div className="bg-black/20 rounded-2xl p-5 border border-white/5">
                   <h3 className="text-xs font-black text-slate-500 uppercase tracking-widest mb-3">Subscription Status</h3>
-                  {profile?.is_premium ? (
+                  {profile?.is_premium && timeRemaining > 0 ? (
                     <div className="space-y-4">
                       <div className="flex items-center gap-3 text-emerald-400 font-bold">
                         <CheckCircle2 className="w-5 h-5" />
@@ -202,7 +214,11 @@ export default function DashboardPage() {
                       </div>
                       <div className="flex items-center gap-3 text-slate-400 text-sm">
                         <Calendar className="w-5 h-5" />
-                        <span>Expires in {remainingDays} days</span>
+                        <span>
+                          {remainingDays > 1
+                            ? `Expires in ${remainingDays} days`
+                            : `Expires in ${remainingHours} hours`}
+                        </span>
                       </div>
                     </div>
                   ) : (

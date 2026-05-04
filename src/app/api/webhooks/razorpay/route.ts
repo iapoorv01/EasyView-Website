@@ -65,7 +65,23 @@ export async function POST(req: Request) {
 
       if (paymentError) console.error("Error logging payment in webhook:", paymentError);
 
-      const expiresAt = new Date();
+      // 5. Calculate new expiration date (Stacking Logic)
+      const { data: currentProfile } = await supabaseAdmin
+        .from('profiles')
+        .select('premium_expires_at')
+        .eq('id', userId)
+        .single();
+
+      let baseDate = new Date();
+      if (currentProfile?.premium_expires_at) {
+        const currentExpiry = new Date(currentProfile.premium_expires_at);
+        // If current expiry is in the future, add to it. Otherwise, start from today.
+        if (currentExpiry > baseDate) {
+          baseDate = currentExpiry;
+        }
+      }
+
+      const expiresAt = new Date(baseDate);
       expiresAt.setMonth(expiresAt.getMonth() + (Number(months) || 1));
 
       // 5. Update User Profile using Admin client to bypass RLS
