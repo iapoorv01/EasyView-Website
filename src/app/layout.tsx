@@ -1,14 +1,14 @@
 import type { Metadata } from 'next';
-import { DM_Sans, Space_Grotesk } from 'next/font/google';
+import { Outfit, Lexend } from 'next/font/google';
 import './globals.css';
 
-const dmSans = DM_Sans({
+const lexend = Lexend({
   subsets: ['latin'],
   variable: '--font-body',
   display: 'swap',
 });
 
-const spaceGrotesk = Space_Grotesk({
+const outfit = Outfit({
   subsets: ['latin'],
   variable: '--font-display',
   display: 'swap',
@@ -102,7 +102,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${dmSans.variable} ${spaceGrotesk.variable} dark`}>
+    <html lang="en" className={`${lexend.variable} ${outfit.variable} dark`}>
       <body className="antialiased bg-slate-950 text-slate-50" suppressHydrationWarning>
         <ExtensionSync />
         {children}

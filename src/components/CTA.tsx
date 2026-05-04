@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Chrome, Github } from 'lucide-react';
+import { Chrome, Sparkles } from 'lucide-react';
 
 export default function CTA() {
   return (
@@ -41,14 +41,13 @@ export default function CTA() {
           </p>
 
           {/* CTAs */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+          <div className="flex flex-col sm:flex-row gap-5 justify-center items-center mb-16">
             <motion.a
               href="https://chromewebstore.google.com/detail/easyview/fkmaolnondclckcdeeanjophpnhndgkk"
               target="_blank" rel="noopener noreferrer"
-              className="group relative flex items-center gap-3 px-8 py-5 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-bold text-lg rounded-2xl shadow-2xl hover:shadow-blue-500/40 transition-all overflow-hidden"
-              whileHover={{ scale: 1.04, y: -3 }} whileTap={{ scale: 0.97 }}
+              className="group relative h-16 px-10 flex items-center justify-center gap-3 bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-bold text-lg rounded-2xl shadow-2xl hover:shadow-blue-500/40 transition-all overflow-hidden"
+              whileHover={{ scale: 1.02, y: -2 }} whileTap={{ scale: 0.98 }}
             >
-              {/* Shimmer effect */}
               <motion.div
                 className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12"
                 initial={{ x: '-100%' }}
@@ -56,17 +55,16 @@ export default function CTA() {
                 transition={{ duration: 0.6 }}
               />
               <Chrome className="w-5 h-5 relative z-10" />
-              <span className="relative z-10">Try EasyView Now</span>
+              <span className="relative z-10">Get EasyView for Chrome</span>
             </motion.a>
 
             <motion.a
-              href="https://github.com/iapoorv01/EasyView"
-              target="_blank" rel="noopener noreferrer"
-              className="flex items-center gap-3 px-8 py-5 bg-white/5 backdrop-blur-xl border border-white/10 text-white font-semibold text-base rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all"
-              whileHover={{ scale: 1.04, y: -3 }} whileTap={{ scale: 0.97 }}
+              href="/pricing"
+              className="h-16 px-10 flex items-center justify-center gap-3 bg-white/5 backdrop-blur-xl border border-white/10 text-white font-bold text-lg rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all"
+              whileHover={{ scale: 1.02, y: -2 }} whileTap={{ scale: 0.98 }}
             >
-              <Github className="w-5 h-5" />
-              View on GitHub
+              <Sparkles className="w-5 h-5 text-purple-400" />
+              <span>See Pricing Plans</span>
             </motion.a>
           </div>
 
