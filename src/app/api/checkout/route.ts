@@ -8,12 +8,16 @@ const razorpay = new Razorpay({
 
 export async function POST(req: Request) {
   try {
-    const { amount, currency } = await req.json();
+    const { amount, currency, userId, months } = await req.json();
 
     const options = {
       amount: amount * 100, // amount in smallest currency unit
       currency,
       receipt: `receipt_${Date.now()}`,
+      notes: {
+        userId,
+        months
+      }
     };
 
     const order = await razorpay.orders.create(options);

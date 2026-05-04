@@ -8,6 +8,7 @@ export async function POST(req: Request) {
       razorpay_payment_id,
       razorpay_signature,
       userId,
+      amount,
       months = 1
     } = await req.json();
 
@@ -33,7 +34,7 @@ export async function POST(req: Request) {
             order_id: razorpay_order_id,
             payment_id: razorpay_payment_id,
             status: 'captured', // Signature match implies success at this stage
-            amount: months * 99, // Storing in Rupees as requested
+            amount: amount, // Use actual amount from request
             currency: 'INR'
           });
 

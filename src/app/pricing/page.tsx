@@ -37,7 +37,12 @@ export default function PricingPage() {
       const res = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ amount: price, currency: "INR" }),
+        body: JSON.stringify({
+          amount: price,
+          currency: "INR",
+          userId: user.id,
+          months: months
+        }),
       });
       const order = await res.json();
 
@@ -58,6 +63,7 @@ export default function PricingPage() {
               razorpay_payment_id: response.razorpay_payment_id,
               razorpay_signature: response.razorpay_signature,
               userId: user?.id || null,
+              amount: price,
               months: months
             }),
           });
@@ -232,10 +238,10 @@ export default function PricingPage() {
                           </div>
                         ))}
                         <div className="flex items-center gap-3 pt-2">
-                           <div className="p-0.5 rounded-md bg-amber-500/10">
-                              <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-                           </div>
-                           <span className="text-[10px] text-amber-500/80 font-black uppercase tracking-widest">More Neural Tools Coming Soon</span>
+                          <div className="p-0.5 rounded-md bg-amber-500/10">
+                            <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+                          </div>
+                          <span className="text-[10px] text-amber-500/80 font-black uppercase tracking-widest">More Neural Tools Coming Soon</span>
                         </div>
                       </div>
 

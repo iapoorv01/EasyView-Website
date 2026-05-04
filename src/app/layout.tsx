@@ -15,10 +15,35 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: 'EasyView — Clarity for every brain 🧠',
-  description: 'The AI-Powered Cognitive Bridge for Web Accessibility. Make any webpage accessible for neurodivergent users with AI-powered features.',
-  keywords: ['accessibility', 'neurodivergent', 'dyslexia', 'ADHD', 'autism', 'chrome extension', 'AI'],
+  metadataBase: new URL('https://easyview.in'),
+  title: {
+    default: 'EasyView — Clarity for Every Brain 🧠',
+    template: '%s | EasyView',
+  },
+  description: 'The AI-Powered Cognitive Bridge for Web Accessibility. EasyView makes the web accessible for neurodivergent users with AI-powered simplification, sensory shielding, and dyslexia-optimized typography.',
+  keywords: [
+    'web accessibility',
+    'cognitive accessibility',
+    'neurodivergent tools',
+    'dyslexia chrome extension',
+    'ADHD browser tool',
+    'sensory shield',
+    'AI jargon decoder',
+    'inclusive design',
+    'web simplification',
+    'autism accessibility',
+    'EasyView',
+    'EasyView Chrome Extension',
+    'EasyView Web Application'
+  ],
   authors: [{ name: 'EasyView Team' }],
+  creator: 'EasyView',
+  publisher: 'EasyView',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   icons: {
     icon: [
       { url: '/favicon.ico' },
@@ -29,11 +54,43 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'EasyView — Clarity for every brain',
-    description: 'AI-powered Chrome extension making the web accessible for neurodivergent users',
+    description: 'AI-powered browser tools for neurodivergent users. Simplify jargon, shield sensory triggers, and customize typography for a calmer web.',
+    url: 'https://easyview.in',
+    siteName: 'EasyView',
+    images: [
+      {
+        url: '/og-image.png', // Ensure this exists in public/
+        width: 1200,
+        height: 630,
+        alt: 'EasyView Platform Preview',
+      },
+    ],
+    locale: 'en_US',
     type: 'website',
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'EasyView — Clarity for Every Brain',
+    description: 'The AI-powered cognitive bridge for web accessibility.',
+    images: ['/og-image.png'],
+    creator: '@EasyViewAI',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   verification: {
-    google: '-DRxZt3O3T6BOH7qi6Nuvney9gn6WKl7vwM1soILS_8',
+    google: [
+      '-DRxZt3O3T6BOH7qi6Nuvney9gn6WKl7vwM1soILS_8',
+      'RjxOkWf_BWpA-PCjLeH2yN793q5N97xGCvIjZVmp4eg'
+    ],
   },
 };
 
