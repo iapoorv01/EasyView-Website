@@ -89,9 +89,31 @@ function LoginContent() {
         }
       }
     } else {
-      const { error } = await supabase.auth.signUp({ email, password });
-      if (error) alert("Check your email for confirmation!");
-      else {
+      console.log('Signup path triggered');
+      const { data, error } = await supabase.auth.signUp({ email, password });
+
+      if (error) {
+        console.error('Signup error:', error.message);
+        alert(error.message);
+      } else {
+        console.log('Signup successful, triggering onboarding...');
+        // Send onboarding email
+        try {
+          const res = await fetch('/api/onboarding', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              email: email,
+              name: email.split('@')[0],
+              userId: data.user?.id
+            })
+          });
+          const result = await res.json();
+          console.log('Onboarding response:', result);
+        } catch (err) {
+          console.error('Failed to send onboarding email:', err);
+        }
+
         alert("Signup successful! Please check your email for confirmation.");
         setIsLogin(true);
       }

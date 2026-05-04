@@ -315,6 +315,12 @@ cd EasyView`} />
             <div className="section-label">Feature Reference</div>
             <h2>Jargon Decoder</h2>
             <p>The Jargon Decoder sends selected text to an AI model with a prompt instructing it to produce a plain-English explanation.</p>
+            <h3>Usage Tiers</h3>
+            <p>The Jargon Decoder uses a quota system to prevent abuse and manage API costs:</p>
+            <ul className="check-list" style={{ marginBottom: "16px" }}>
+              <li><strong>Free Tier:</strong> Includes a generous monthly limit of free decodes.</li>
+              <li><strong>Premium Tier:</strong> Unlocks unlimited decodes and advanced sensory shield features.</li>
+            </ul>
             <h3>AI Providers</h3>
             <div className="provider-grid">
               <div className="provider-card">
@@ -328,10 +334,11 @@ cd EasyView`} />
             </div>
             <h3>Fallback Behaviour</h3>
             <p>If the primary AI provider fails (network error or quota exceeded), EasyView automatically retries with the secondary provider if configured.</p>
-            <h3>API Key Storage</h3>
-            <CodeBlock id="storage-code" lang="javascript" code={`// Keys stored with Chrome's local storage API
+            <h3>Bring Your Own Key (BYOK)</h3>
+            <p>Users who prefer not to use our subscription tiers can optionally input their own Google Gemini or OpenRouter API keys to bypass EasyView's quotas entirely. Custom keys are executed purely client-side.</p>
+            <CodeBlock id="storage-code" lang="javascript" code={`// Keys stored securely with Chrome's local storage API
 chrome.storage.local.set({ geminiKey: userKey });
-// Never transmitted to EasyView servers`} />
+// Never transmitted to EasyView backend`} />
           </section>
 
           {/* Permissions */}
@@ -344,6 +351,7 @@ chrome.storage.local.set({ geminiKey: userKey });
                 { perm: "activeTab", why: "Access to the currently active tab to inject content scripts. Only triggers when you click the extension icon." },
                 { perm: "storage", why: "Local storage for persisting user settings and API keys on your device." },
                 { perm: "scripting", why: "Ability to inject content scripts into pages to apply font changes, overlays, and sensory effects." },
+                { perm: "alarms", why: "Used by the background service worker to periodically re-validate premium subscription status with Supabase." },
                 { perm: "tts", why: "Optional — used by Text-to-Speech as a fallback on some systems." },
               ].map((p) => (
                 <div className="permission-row" key={p.perm}>
@@ -410,8 +418,8 @@ chrome.storage.local.set({ geminiKey: userKey });
 
           {/* CTA */}
           <section className="cta-section">
-            <h2>Open Source & Free</h2>
-            <p>EasyView is 100% open source. Contributions, bug reports, and feature requests are welcome.</p>
+            <h2>Open Source & Premium Ready</h2>
+            <p>EasyView's core is open source. Try the free tier today, or upgrade to Premium for unlimited AI power.</p>
             <div className="cta-buttons">
               <a href="https://github.com/iapoorv01/EasyView" className="btn-primary" target="_blank" rel="noopener noreferrer">View on GitHub</a>
               <a href="https://chromewebstore.google.com/detail/easyview/fkmaolnondclckcdeeanjophpnhndgkk" className="btn-secondary" target="_blank" rel="noopener noreferrer">Install Extension</a>
@@ -513,8 +521,8 @@ const CSS = `
   .step-num { background: #7c3aed; color: white; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; }
 
   .check-list { list-style: none; display: flex; flex-direction: column; gap: 8px; margin: 12px 0; }
-  .check-list li { display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: var(--text2); line-height: 1.5; }
-  .check-list li::before { content: '✓'; color: #059669; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+  .check-list li { position: relative; padding-left: 24px; font-size: 14px; color: var(--text2); line-height: 1.5; }
+  .check-list li::before { content: '✓'; color: #059669; font-weight: 700; position: absolute; left: 0; top: 1px; }
 
   .setup-steps { display: flex; flex-direction: column; gap: 16px; margin: 16px 0; }
   .setup-step { display: flex; gap: 16px; background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 20px; }

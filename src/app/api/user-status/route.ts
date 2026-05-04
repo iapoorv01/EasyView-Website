@@ -24,14 +24,44 @@ export async function GET(req: Request) {
 
     // Check if subscription has expired
     let isPremium = data?.is_premium || false;
-    if (isPremium && data.premium_expires_at) {
-      const expiryDate = new Date(data.premium_expires_at);
+    let premiumExpiresAt = data?.premium_expires_at;
+
+    if (isPremium && premiumExpiresAt) {
+      const expiryDate = new Date(premiumExpiresAt);
       if (new Date() > expiryDate) {
         isPremium = false;
         await supabaseAdmin
           .from('profiles')
           .update({ is_premium: false })
           .eq('id', userId);
+      }
+    } else if (!isPremium && !premiumExpiresAt) {
+      // NEW USER TRIAL: Give 1 day of free pro features if they've never had premium/trial
+      console.log(`UserStatus: Activating 1-day trial for new user ${userId}`);
+      const trialExpiry = new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString();
+
+      const { error: trialError } = await supabaseAdmin
+        .from('profiles')
+        .update({
+          is_premium: true,
+          premium_expires_at: trialExpiry,
+          premium_since: new Date().toISOString()
+        })
+        .eq('id', userId);
+
+      if (!trialError) {
+        isPremium = true;
+        premiumExpiresAt = trialExpiry;
+        return new Response(JSON.stringify({
+          isPremium: true,
+          isTrial: true,
+          trialActivated: true,
+          expiresAt: trialExpiry,
+          quota: { used: 0, limit: 5, remaining: 5 }
+        }), {
+          status: 200,
+          headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json' }
+        });
       }
     }
 
@@ -61,7 +91,8 @@ export async function GET(req: Request) {
 
     return new Response(JSON.stringify({
       isPremium,
-      expiresAt: data?.premium_expires_at,
+      isTrial: data?.is_premium === false && premiumExpiresAt !== null, // True if they are premium now but were free before (in this request cycle)
+      expiresAt: premiumExpiresAt,
       quota: {
         used: decodesUsed,
         limit: 5,

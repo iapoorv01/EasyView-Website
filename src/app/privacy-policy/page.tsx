@@ -127,15 +127,15 @@ export default function PrivacyPolicyPage() {
         <div className="page-hero-inner">
           <div className="page-badge">🔐 Privacy</div>
           <h1 className="page-title">Privacy Policy</h1>
-          <p className="page-subtitle">Your privacy is our foundation. EasyView is built from the ground up to collect zero data about you.</p>
+          <p className="page-subtitle">Your privacy is our foundation. We only collect what is strictly necessary to run EasyView securely.</p>
           <div className="hero-stats">
-            <div className="stat"><div className="stat-val">0</div><div className="stat-label">Data collected</div></div>
+            <div className="stat"><div className="stat-val">Strict</div><div className="stat-label">Data Security</div></div>
             <div className="stat-divider" />
-            <div className="stat"><div className="stat-val">0</div><div className="stat-label">Servers storing your data</div></div>
+            <div className="stat"><div className="stat-val">Supabase</div><div className="stat-label">Encrypted Backend</div></div>
             <div className="stat-divider" />
-            <div className="stat"><div className="stat-val">100%</div><div className="stat-label">On-device storage</div></div>
+            <div className="stat"><div className="stat-val">Local</div><div className="stat-label">Web Mod Storage</div></div>
           </div>
-          <p className="hero-date">Last Updated: March 2026</p>
+          <p className="hero-date">Last Updated: May 2026</p>
         </div>
       </section>
 
@@ -164,7 +164,7 @@ export default function PrivacyPolicyPage() {
               <div className="highlight-icon">🔒</div>
               <div>
                 <strong>The short version</strong>
-                <p>EasyView collects <em>nothing</em> about you. No telemetry. No analytics. No personal data. Zero data is collected from you.</p>
+                <p>We collect basic account information (like email) for premium subscriptions, and anonymous usage analytics. All core webpage modifications happen locally on your device.</p>
               </div>
             </div>
           </section>
@@ -172,16 +172,23 @@ export default function PrivacyPolicyPage() {
           {/* Not collected */}
           <section id="not-collected" className="content-section">
             <div className="section-label">Data Practices</div>
-            <h2>Information We Do NOT Collect</h2>
-            <p>EasyView does not collect any of the following:</p>
+            <h2>Information We Collect</h2>
+            <p>To provide you with premium features and secure support, we collect the following limited data using Supabase:</p>
+            <ul className="check-list" style={{ marginTop: '16px', marginBottom: '32px' }}>
+              <li><strong>Account Information:</strong> Your email address and basic profile data (via Supabase Auth/Google OAuth) to manage your premium subscription.</li>
+              <li><strong>Subscription & Payments:</strong> We track premium status, order IDs, and payment status to enforce premium access. We do <em>not</em> store raw credit card numbers.</li>
+              <li><strong>Feedback & Support:</strong> Any messages, bug reports, or emails you send us via our Contact Form.</li>
+              <li><strong>Anonymous Usage Analytics:</strong> We log basic, anonymous feature usage (e.g., "Jargon Decoder used") to help us understand what tools help users the most.</li>
+            </ul>
+
+            <h3>Information We Do NOT Collect</h3>
+            <p style={{ marginTop: '12px' }}>Even with a premium account, EasyView does not collect any of the following:</p>
             <div className="no-list">
               {[
-                "Personal identifiable information (name, email, age, location)",
                 "Browsing history or the URLs you visit",
                 "The content of webpages you view",
                 "The text you select or decode using the Jargon Decoder",
                 "Your AI API keys",
-                "Usage statistics, analytics, or telemetry",
                 "Device identifiers or IP addresses",
                 "Cookies or cross-site tracking data",
               ].map((item) => (
@@ -191,7 +198,7 @@ export default function PrivacyPolicyPage() {
                 </div>
               ))}
             </div>
-            <div className="note-card">We have no backend server that receives data from the extension during normal use.</div>
+            <div className="note-card">Our backend server is strictly used for authentication, payments, and opt-in feedback. All reading features run locally on your device.</div>
           </section>
 
           {/* Local storage */}
@@ -208,8 +215,8 @@ export default function PrivacyPolicyPage() {
               <li>Theme and display preferences (dark mode, reduce motion)</li>
             </ul>
 
-            <h3>AI API Keys (Optional)</h3>
-            <p>If you choose to use AI-powered features, you must provide your own API key. This key is:</p>
+            <h3>Custom AI API Keys (Bring Your Own Key)</h3>
+            <p>If you prefer to bypass our Free/Premium quotas, you can optionally provide your own personal API key. If you choose this option, your key is:</p>
             <ul className="check-list">
               <li>Stored only in Chrome's local storage on your device</li>
               <li>Never transmitted to EasyView or any EasyView-controlled server</li>
@@ -228,7 +235,11 @@ export default function PrivacyPolicyPage() {
           <section id="ai-usage" className="content-section">
             <div className="section-label">Third Parties</div>
             <h2>AI API Usage & Third Parties</h2>
-            <p>When you use the Jargon Decoder or AI simplification features, your browser makes a direct API call to your configured AI provider. This call includes the text you selected and your API key — sent directly from your browser to the provider, not via EasyView.</p>
+            <p>How the Jargon Decoder communicates with AI models depends on your usage tier:</p>
+            <ul className="check-list" style={{ marginTop: '12px', marginBottom: '24px' }}>
+              <li><strong>Free / Premium Tier (Built-in):</strong> Your request is securely routed through our backend using our corporate API keys. We do not store or log the text you highlight.</li>
+              <li><strong>Bring Your Own Key (BYOK):</strong> Your browser makes a direct API call to the AI provider using your personal key. This call bypasses EasyView's backend entirely.</li>
+            </ul>
 
             <div className="flow-diagram">
               <div className="flow-node">Your Browser</div>
@@ -261,6 +272,7 @@ export default function PrivacyPolicyPage() {
                 { perm: "activeTab", color: "blue", why: "Required to inject accessibility scripts (reading mode, sensory shield, TTS) into the page you are currently viewing. EasyView only accesses the active tab when you click the extension icon." },
                 { perm: "storage", color: "purple", why: "Required to save your accessibility preferences and optional AI key locally on your device so your settings persist between browser sessions." },
                 { perm: "scripting", color: "green", why: "Required to inject content scripts into pages — this is how EasyView applies font changes, overlays, and sensory shield effects to webpages." },
+                { perm: "alarms", color: "orange", why: "Used to periodically and securely verify your premium subscription status in the background without slowing down your browsing experience." },
               ].map((p) => (
                 <div className="perm-item" key={p.perm}>
                   <div className="perm-header">
@@ -269,20 +281,6 @@ export default function PrivacyPolicyPage() {
                   <p>{p.why}</p>
                 </div>
               ))}
-            </div>
-          </section>
-
-          {/* Children */}
-          <section id="children" className="content-section">
-            <div className="section-label">Safety</div>
-            <h2>Children's Privacy</h2>
-            <p>EasyView is suitable for users of all ages, including children. Because we do not collect any personal data from any user, there are no special concerns regarding children's data.</p>
-            <div className="highlight-box">
-              <div className="highlight-icon">👶</div>
-              <div>
-                <strong>COPPA Compliant by Design</strong>
-                <p>EasyView complies with the Children's Online Privacy Protection Act (COPPA) by design — we collect nothing from any user, regardless of age.</p>
-              </div>
             </div>
           </section>
 
@@ -303,7 +301,7 @@ export default function PrivacyPolicyPage() {
           <section id="rights" className="content-section">
             <div className="section-label">Your Control</div>
             <h2>Your Rights</h2>
-            <p>Because EasyView does not collect personal data, there is no data held by us about you. However, you have the following controls:</p>
+            <p>You have full control over your data. You have the following controls:</p>
             <div className="rights-grid">
               {[
                 { icon: "🗑️", title: "Delete Local Settings", desc: "Go to Chrome Settings → Extensions → EasyView → Clear Data" },
@@ -321,7 +319,7 @@ export default function PrivacyPolicyPage() {
             </div>
             <div className="legal-note">
               <strong>GDPR / UK GDPR / CCPA</strong>
-              <p>If you are in the European Economic Area, United Kingdom, or California, you may have additional rights under applicable law. Since we hold no personal data, these rights are satisfied by design — there is nothing we could provide, rectify, or delete on our end.</p>
+              <p>If you are in the European Economic Area, United Kingdom, or California, you may have additional rights under applicable law to request access, rectification, or deletion of your data. You can contact us at easyview.support@gmail.com to permanently delete your account and all associated premium records.</p>
             </div>
           </section>
 
@@ -371,11 +369,11 @@ export default function PrivacyPolicyPage() {
                   <p>github.com/iapoorv01/EasyView</p>
                 </div>
               </a>
-              <a href="https://easyview.vercel.app/" className="contact-card" target="_blank" rel="noopener noreferrer">
+              <a href="https://easyview.in/" className="contact-card" target="_blank" rel="noopener noreferrer">
                 <div className="contact-icon">🌐</div>
                 <div>
                   <strong>Website</strong>
-                  <p>easyview.vercel.app</p>
+                  <p>easyview.in</p>
                 </div>
               </a>
             </div>
@@ -464,8 +462,8 @@ const CSS = `
   .no-icon { color: #dc2626; font-weight: 700; font-size: 13px; flex-shrink: 0; }
 
   .check-list { list-style: none; display: flex; flex-direction: column; gap: 8px; margin: 12px 0; }
-  .check-list li { display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: var(--text2); line-height: 1.5; }
-  .check-list li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+  .check-list li { position: relative; padding-left: 24px; font-size: 14px; color: var(--text2); line-height: 1.5; }
+  .check-list li::before { content: '✓'; color: var(--green); font-weight: 700; position: absolute; left: 0; top: 1px; }
 
   .flow-diagram { display: flex; align-items: center; justify-content: center; gap: 12px; background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin: 20px 0; flex-wrap: wrap; gap: 8px; }
   .flow-node { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 10px 18px; font-size: 14px; font-weight: 600; }
@@ -488,9 +486,11 @@ const CSS = `
   .perm-badge.blue { background: #dbeafe; color: #1e40af; border: 1px solid #bfdbfe; }
   .perm-badge.purple { background: #f5f3ff; color: #6d28d9; border: 1px solid #ddd6fe; }
   .perm-badge.green { background: #dcfce7; color: #065f46; border: 1px solid #bbf7d0; }
+  .perm-badge.orange { background: #ffedd5; color: #9a3412; border: 1px solid #fed7aa; }
   .dark .perm-badge.blue { background: #1e3a5f; color: #93c5fd; border-color: #1e40af; }
   .dark .perm-badge.purple { background: #2e1065; color: #c4b5fd; border-color: #6d28d9; }
   .dark .perm-badge.green { background: #052e16; color: #4ade80; border-color: #166534; }
+  .dark .perm-badge.orange { background: #431407; color: #fdba74; border-color: #7c2d12; }
   .perm-item p { font-size: 14px; color: var(--text2); margin: 0; line-height: 1.5; }
 
   .rights-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin: 16px 0; }
