@@ -147,7 +147,7 @@ export default function Footer() {
             <span>for better accessibility</span>
           </p>
           <p className="text-slate-600 text-[10px] font-black uppercase tracking-[0.3em]">
-            © {new Date().getFullYear()} EasyView. All rights reserved.
+            © {new Date().getFullYear()} EasyView. All rights reserved. · v1.0.1
           </p>
 
         </motion.div>

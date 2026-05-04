@@ -70,18 +70,19 @@ export default function PricingPage() {
 
           const result = await verifyRes.json();
 
-          if (verifyRes.ok && result.status === "premium") {
+          if (verifyRes.ok && (result.status === "premium" || result.status === "verifying")) {
             setSuccess(true);
+            
+            // Still trigger the message so the extension knows it's happening
             window.postMessage({
               type: "EASYVIEW_PAYMENT_SUCCESS",
               isPremium: true,
-              expiresAt: result.expiresAt,
-              email: result.email
+              email: result.email || user?.email
             }, "*");
 
             setTimeout(() => {
               router.push('/dashboard');
-            }, 2500);
+            }, 3000); // Slightly longer delay to give webhook time to finish
           } else {
             setLoading(null);
             alert("Verification failed: " + (result.error || "Unknown error"));

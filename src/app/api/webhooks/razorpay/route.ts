@@ -45,7 +45,7 @@ export async function POST(req: Request) {
         .from('payments')
         .select('id')
         .eq('payment_id', razorpay_payment_id)
-        .single();
+        .maybeSingle();
 
       if (existingPayment) {
         return new Response(JSON.stringify({ message: "Payment already processed" }), { status: 200 });
